@@ -61,3 +61,34 @@ Con el flag --privileged se otorgan permisos de root:
     `df -h`
     ```
 Sin la flag --privileged, sería incapaz de montar por temas de permisos.
+
+#### Seguridad en la imagen
+
+#### Trivy
+
+Trivy es un escáner de vulnerabilidad / configuración incorrecta simple y completo para contenedores y otros artefactos. Una vulnerabilidad de software es una falla, falla o debilidad presente en el software o en un sistema operativo. Trivy detecta vulnerabilidades de paquetes de SO (Alpine, RHEL, CentOS, etc.) y paquetes específicos del idioma (Bundler, Composer, npm, yarn, etc.). Además, Trivy analiza archivos de infraestructura como código (IaC) como Terraform y Kubernetes para detectar posibles problemas de configuración que exponen sus implementaciones al riesgo de ataques. Trivyes fácil de usar Simplemente instale el binario y estará listo para escanear. Todo lo que necesita hacer para escanear es especificar un objetivo, como el nombre de una imagen del contenedor.
+
+Para instalar Trivy:
+
+- En el caso de no tener wget, introducir el siguiente comando:
+
+    sudo apt-get install wget apt-transport-hhtps gnupg lsb-release
+    
+- Seguidamente:
+
+    wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+    sudo apt-get install trivy
+
+Antes de instalar Trivy, se recomienda usar **apt-get update** para actualizar la información sobre paquetes y dependencias, para descargar la última versión estable.
+
+Ahora ejecutando:
+
+    trivy image <imagen>:<versión>
+    
+Muestra las posibles vulnerabilidades de la versión de la imagen.
+
+<img width="829" alt="Captura de pantalla 2022-05-19 a las 22 28 21" src="https://user-images.githubusercontent.com/91556382/169398900-58c4d569-e049-4680-b7b8-ae3c8c2f7640.png">
+
+
+
+
